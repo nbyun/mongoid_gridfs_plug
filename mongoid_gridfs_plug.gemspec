@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["835482737@qq.com"]
   spec.description   = %q{mongoid gridfs plug}
   spec.summary       = %q{}
-  spec.homepage      = "https://github.com/nbyun/mongoid_gridfs_plug"
+  spec.homepage      = "https://github.com/nbyun/mongoid-gridfs-plug"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split("\n")
