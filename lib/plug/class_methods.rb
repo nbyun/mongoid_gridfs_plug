@@ -3,7 +3,6 @@ module Plug
     def attachment_accessor_module
       @attachment_accessor_module ||= Module.new
     end
-
     def attachment(name, options = {})
       options.symbolize_keys!
       name = name.to_sym
@@ -15,10 +14,10 @@ module Plug
       after_save     :destroy_nil_attachments
       before_destroy :destroy_all_attachments
 
-      key :"#{name}_id",   ObjectId
-      key :"#{name}_name", String
-      key :"#{name}_size", Integer
-      key :"#{name}_type", String
+      field :"#{name}_id",   type: BSON::ObjectId
+      field :"#{name}_name", type: String
+      field :"#{name}_size", type: Integer
+      field :"#{name}_type", type: String
 
       validates_presence_of(name) if options[:required]
 
@@ -26,18 +25,20 @@ module Plug
         def #{name}
           @#{name} ||= AttachmentProxy.new(self, :#{name})
         end
+
         def #{name}?
           !nil_attachments.has_key?(:#{name}) && send(:#{name}_id?)
         end
+
         def #{name}=(file)
           if file.nil?
             nil_attachments[:#{name}] = send("#{name}_id")
             assigned_attachments.delete(:#{name})
           else
             send("#{name}_id=", BSON::ObjectId.new) if send("#{name}_id").nil?
-            send("#{name}_name=", Joint::FileHelpers.name(file))
-            send("#{name}_size=", Joint::FileHelpers.size(file))
-            send("#{name}_type=", Joint::FileHelpers.type(file))
+            send("#{name}_name=", Joint.name(file))
+            send("#{name}_size=", Joint.size(file))
+            send("#{name}_type=", Joint.type(file))
             assigned_attachments[:#{name}] = file
             nil_attachments.delete(:#{name})
           end
