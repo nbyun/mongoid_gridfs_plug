@@ -1,6 +1,6 @@
 require 'stringio'
 
-module Joint
+module Plug
   class IO
     attr_accessor :name, :content, :type, :size
 
