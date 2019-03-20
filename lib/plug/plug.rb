@@ -6,7 +6,7 @@ module Plug
   
   included do
     class_attribute :attachment_names
-    self.attachement_names = Set.new
+    self.attachment_names = Set.new
     include attachment_accessor_module
   end
 
