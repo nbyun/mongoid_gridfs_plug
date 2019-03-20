@@ -29,7 +29,7 @@ module Plug
     end
 end
 
-require 'class_methods'
-require 'instance_methods'
-require 'attachment_proxy'
-require 'io'
+require_relative 'class_methods'
+require_relative 'instance_methods'
+require_relative 'attachment_proxy'
+require_relative 'io'

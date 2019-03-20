@@ -1,4 +1,4 @@
-require 'safe_shell'
+require_relative 'safe_shell'
 module Wand
   def self.wave(path)
     type = parse_type(execute_file_cmd(path))
