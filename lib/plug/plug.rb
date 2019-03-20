@@ -19,7 +19,7 @@ module Plug
   end
   
   def self.type(file)
-    if file.is_a?(Plug::IO) ? file.type : Wand.wave(file.path)
+    file.is_a?(Plug::IO) ? file.type : Wand.wave(file.path)
   end
   
   private
