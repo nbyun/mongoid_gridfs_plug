@@ -36,9 +36,9 @@ module Plug
             assigned_attachments.delete(:#{name})
           else
             send("#{name}_id=", BSON::ObjectId.new) if send("#{name}_id").nil?
-            send("#{name}_name=", Joint.name(file))
-            send("#{name}_size=", Joint.size(file))
-            send("#{name}_type=", Joint.type(file))
+            send("#{name}_name=", Plug.name(file))
+            send("#{name}_size=", Plug.size(file))
+            send("#{name}_type=", Plug.type(file))
             assigned_attachments[:#{name}] = file
             nil_attachments.delete(:#{name})
           end
