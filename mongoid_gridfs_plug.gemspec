@@ -5,7 +5,7 @@ require 'mongoid_gridfs_plug'
 
 Gem::Specification.new do |spec|
   spec.name          = "mongoid_gridfs_plug"
-  spec.version       = MongoidGridfsPlug::VERSION
+  spec.version       = MongoidGridfsPlug::Version
   spec.authors       = ["niebuyun"]
   spec.email         = ["835482737@qq.com"]
   spec.description   = %q{mongoid gridfs plug}
